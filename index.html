@@ -3,114 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linyan Li | Data Science Portfolio</title>
+    <title>Linyan Li | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; }
-        .nav-link { font-size: 0.875rem; font-weight: 500; color: #64748b; transition: color 0.2s; }
-        .nav-link:hover { color: #000000; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="selection:bg-blue-100">
-
+<body class="bg-white text-slate-900 font-['Inter']">
     <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold tracking-tighter text-xl">Linyan Li</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#project" class="nav-link">Project</a>
-                <a href="#conference" class="nav-link">Conference</a>
-                <a href="UchicagoDS_CV.pdf" target="_blank" class="nav-link">CV</a>
+            <a href="index.html" class="font-bold tracking-tighter text-xl text-slate-900 hover:text-blue-600 transition">Linyan Li</a>
+            <div class="space-x-8 text-sm font-medium text-slate-500">
+                <a href="experience.html" class="hover:text-blue-600 transition">Experience</a>
+                <a href="project.html" class="hover:text-blue-600 transition">Project</a>
+                <a href="conference.html" class="hover:text-blue-600 transition">Conference</a>
+                <a href="UchicagoDS_CV.pdf" target="_blank" class="text-blue-600 font-semibold underline underline-offset-4">CV</a>
             </div>
-            <div class="md:hidden text-slate-500 text-sm">Menu</div>
         </div>
     </nav>
 
     <main class="max-w-5xl mx-auto px-6 pt-32 pb-24">
-        
-        <section id="home" class="flex flex-col md:flex-row items-start justify-between mb-32 gap-12">
+        <section class="flex flex-col md:flex-row items-start justify-between gap-16">
             <div class="flex-1">
-                <h1 class="text-6xl font-bold tracking-tight mb-8 text-slate-900">
-                    Hi, I'm <span class="text-blue-600">Linyan</span>.
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
+                    Bridging <span class="text-blue-600">Mathematical Modeling</span> & AI-driven Optimization.
                 </h1>
-                <p class="text-2xl text-slate-600 leading-relaxed max-w-2xl mb-10">
-                    I bridge the gap between <strong>Mathematical Modeling</strong> and <strong>AI-driven optimization</strong>.
-                </p>
-                
-                <div class="space-y-6 border-l-2 border-blue-600 pl-6 py-2">
+                <p class="text-xl text-slate-500 mb-10">Data Science & Statistics student at <strong>UW-Madison</strong>.</p>
+                <div class="space-y-8 border-l-2 border-blue-600 pl-8">
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900">University of Wisconsin-Madison</h3>
-                        <p class="text-slate-600 text-sm">BS in Statistics and Data Science (Double Major) [cite: 3, 4]</p>
-                        <p class="text-slate-500 text-xs">GPA: 3.873 | Dean's Lists (Fall 2024, Fall 2025) [cite: 4, 8]</p>
+                        <h3 class="text-lg font-bold">University of Wisconsin-Madison</h3>
+                        <p class="text-slate-600 italic text-sm">BS in Statistics and Data Science | GPA: 3.873</p>
+                        <p class="text-slate-400 text-xs mt-1">Dean's Lists (Fall 2024, Fall 2025)</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900">University of Nottingham Ningbo China</h3>
-                        <p class="text-slate-600 text-sm">BS in Finance, Accounting and Management (Honors) [cite: 10, 11]</p>
+                        <h3 class="text-lg font-bold">University of Nottingham Ningbo China</h3>
+                        <p class="text-slate-600 italic text-sm">BS in Finance, Accounting and Management (Honors)</p>
                     </div>
                 </div>
             </div>
-
-            <div class="w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
-                <img src="me.jpg" alt="Linyan Li" class="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-white">
+            <div class="w-full md:w-80 aspect-square flex-shrink-0">
+                <img src="me.jpg" class="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-white grayscale hover:grayscale-0 transition duration-500">
             </div>
         </section>
-
-        <section id="experience" class="pt-20 mb-32">
-            <h2 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-semibold mb-12">Experience</h2>
-            <div class="space-y-12">
-                <div class="group border-b border-slate-100 pb-10">
-                    <div class="flex flex-col md:flex-row justify-between mb-4">
-                        <h3 class="text-2xl font-bold">Zhongguang Suchuang</h3>
-                        <span class="text-slate-400">Jun 2025 – Aug 2025 [cite: 19]</span>
-                    </div>
-                    <p class="text-blue-600 font-medium mb-4">Data Scientist Research Assistant [cite: 17]</p>
-                    <ul class="text-slate-600 space-y-2 text-sm leading-relaxed list-disc ml-4">
-                        <li>Analyzed 50k+ transactions using ARIMA & Prophet, improving inventory turnover by 8%. [cite: 20]</li>
-                        <li>Built segmentation pipelines with K-Means & DBSCAN, boosting sales by 12%. [cite: 20]</li>
-                    </ul>
-                </div>
-                <div class="group border-b border-slate-100 pb-10">
-                    <div class="flex flex-col md:flex-row justify-between mb-4">
-                        <h3 class="text-2xl font-bold">BCG (Shanghai)</h3>
-                        <span class="text-slate-400">Jan 2023 – Mar 2023 [cite: 34]</span>
-                    </div>
-                    <p class="text-blue-600 font-medium mb-4">Management Consulting Intern [cite: 33]</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">Built a 3-year electric vehicle market dataset across 10+ segments with Python/SQL ETL. [cite: 35]</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="project" class="pt-20 mb-32">
-            <h2 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-semibold mb-12">Featured Project</h2>
-            <div class="bg-slate-50 p-8 rounded-3xl">
-                <h3 class="text-2xl font-bold mb-2 text-slate-900">LLM-Based Surgical Scheduling</h3>
-                <p class="text-sm text-blue-600 mb-6 font-medium">Python, CPLEX, GLM-4 API </p>
-                <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                    Developed an API-based framework integrating LLMs with operations research to automate surgical case analysis and sequence allocation for 1k+ surgeries. 
-                </p>
-                <div class="flex gap-4">
-                    <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm text-slate-500">Resource Utilization +22% </span>
-                    <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm text-slate-500">Decision Speed +20% </span>
-                </div>
-            </div>
-        </section>
-
-        <section id="conference" class="pt-20 mb-32">
-            <h2 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-semibold mb-12">Conference</h2>
-            <div class="border-l-4 border-slate-900 pl-8 py-4">
-                <p class="text-slate-400 text-sm mb-2">INFORMS Annual Meeting 2025, Atlanta [cite: 39]</p>
-                <h3 class="text-xl font-bold text-slate-900">From Links to Lanes: A Lane-Level Traffic Assignment Framework [cite: 38]</h3>
-                <p class="text-slate-600 text-sm mt-4 italic">Improved accuracy in congestion prediction by 22% on real-world networks. [cite: 40]</p>
-            </div>
-        </section>
-
-        <footer class="pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p class="text-2xl font-bold tracking-tight">Let's build the future.</p>
-            <a href="mailto:lilinyan673@gmail.com" class="text-blue-600 font-medium hover:underline underline-offset-8 transition">lilinyan673@gmail.com</a>
-        </footer>
-
     </main>
 </body>
 </html>
