@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference | Linyan Li</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferences | Linyan Li</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body class="bg-white text-slate-900 font-['Inter']">
+<body class="bg-white text-slate-900">
     <nav class="fixed top-0 left-0 right-0 bg-white border-b border-slate-50 z-50">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-bold tracking-tighter text-xl">Linyan Li</a>
+            <a href="index.html" class="font-bold tracking-tighter text-xl text-slate-900">Linyan Li</a>
             <div class="space-x-8 text-sm font-medium text-slate-500">
-                <a href="experience.html" class="hover:text-blue-600">Experience</a>
-                <a href="project.html" class="hover:text-blue-600">Project</a>
+                <a href="experience.html" class="hover:text-blue-600 transition">Experience</a>
+                <a href="project.html" class="hover:text-blue-600 transition">Project</a>
                 <a href="conference.html" class="text-blue-600 font-bold">Conference</a>
-                <a href="life.html" class="hover:text-blue-600">Life</a>
-                <a href="UchicagoDS_CV.pdf" target="_blank" class="text-blue-600 font-bold underline underline-offset-4">CV</a>
+                <a href="live.html" class="hover:text-blue-600 transition">Life</a>
+                <a href="LinyanLi_CV.pdf" target="_blank" class="text-blue-600 font-bold underline underline-offset-4">CV</a>
             </div>
         </div>
     </nav>
-    <main class="max-w-3xl mx-auto px-6 pt-32 pb-24">
-        <h2 class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-12">Conference & Papers</h2>
-        <div class="space-y-16">
-            <div class="pl-10 border-l-2 border-slate-900">
-                <p class="text-blue-600 font-bold text-xs uppercase mb-2">Oct 2025 | Atlanta</p>
-                <h3 class="text-2xl font-bold mb-2">INFORMS Annual Meeting</h3>
-                <p class="text-slate-600 italic">"From Links to Lanes: A Lane-Level Traffic Assignment Framework"</p>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24">
+        <h2 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-12">Academic Publications & Conferences</h2>
+        
+        <div class="space-y-12">
+            
+            <div class="relative pl-8 border-l-2 border-slate-100 pb-4">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white"></div>
+                
+                <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                    <h3 class="text-xl font-bold text-slate-900 leading-snug">
+                        LLM-Based Surgical Scheduling Optimization: A Multi-Agent Framework
+                    </h3>
+                    <span class="text-sm font-semibold text-blue-600 shrink-0">Accepted / Forthcoming</span>
+                </div>
+                
+                <p class="text-slate-600 italic mb-3">
+                    The 2025 International Conference on Operations Research and AI (Sample Conference)
+                </p>
+                
+                <div class="text-slate-500 text-sm leading-relaxed">
+                    <p><strong>Role:</strong> First Author & Presenter</p>
+                    <p class="mt-2">Presented an integrated framework of Mixed-Integer Linear Programming and Large Language Models to resolve complex operating room constraints.</p>
+                </div>
             </div>
-            <div class="pl-10 border-l-2 border-slate-100">
-                <p class="text-slate-400 font-bold text-xs uppercase mb-2">Apr 2024 | Nottingham</p>
-                <h3 class="text-2xl font-bold mb-2">NUBS Tri-Campus Conference</h3>
-                <p class="text-slate-600 italic">"A Reinforcement Learning Approach to Dynamic Pricing"</p>
+
+            <div class="relative pl-8 border-l-2 border-slate-100 pb-4">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-200 border-4 border-white"></div>
+                
+                <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                    <h3 class="text-xl font-bold text-slate-900 leading-snug">
+                        Data-Driven Inclusion: Measuring Workforce Equality in Social Enterprises
+                    </h3>
+                    <span class="text-sm font-semibold text-slate-400 shrink-0">Presented | Feb. 2023</span>
+                </div>
+                
+                <p class="text-slate-600 italic mb-3">
+                    Nottingham University Business School (NUBS) Annual Strategy Forum
+                </p>
+                
+                <div class="text-slate-500 text-sm leading-relaxed">
+                    <p><strong>Role:</strong> Project Lead / Speaker</p>
+                    <p class="mt-2">Discussed the implementation of BERT-based sentiment analysis and K-means clustering to quantify the social impact of the "Inclusion Factory" initiative.</p>
+                </div>
             </div>
+
+        </div>
+
+        <div class="mt-16 p-8 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+            <p class="text-slate-400 text-sm text-center italic">
+                Additional manuscripts regarding Health Data Experimentation are currently in preparation for submission.
+            </p>
         </div>
     </main>
 </body>
