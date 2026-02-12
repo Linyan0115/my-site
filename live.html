@@ -9,7 +9,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
         
-        /* Masonry Grid Layout */
         .masonry-container {
             column-count: 2;
             column-gap: 1.25rem;
@@ -26,7 +25,7 @@
             background: #f8fafc;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: zoom-in;
-            opacity: 0; /* Initially hidden for fade-in effect */
+            opacity: 0; 
         }
 
         .masonry-item img {
@@ -41,28 +40,47 @@
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
 
-        .masonry-item:hover img {
-            transform: scale(1.05);
-        }
+        .masonry-item:hover img { transform: scale(1.05); }
 
-        /* Image Label Overlay */
-        .img-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5));
-            padding: 15px;
+        /* Lightbox Overlay */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
         }
-        .masonry-item:hover .img-overlay { opacity: 1; }
 
-        /* Lightbox Fade In */
-        #lightbox.active { display: flex; animation: fadeIn 0.3s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        #lightbox.active #lightbox-img {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1010;
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -86,7 +104,6 @@
             <p class="text-slate-500 max-w-2xl mb-8 leading-relaxed">
                 Capture of my journey beyond research—exploring the world, tasting life, and staying curious. 🌍✨
             </p>
-            
             <div class="flex flex-wrap gap-3 text-[10px] font-bold uppercase tracking-widest">
                 <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100"># Adventure</span>
                 <span class="px-4 py-1.5 bg-orange-50 text-orange-600 rounded-full border border-orange-100"># Photography</span>
@@ -95,47 +112,53 @@
             </div>
         </div>
 
-        <div class="masonry-container" id="photo-grid">
-            </div>
+        <div class="masonry-container" id="photo-grid"></div>
     </main>
 
-    <div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 cursor-zoom-out" onclick="this.classList.add('hidden')">
-        <img id="lightbox-img" class="max-h-full max-w-full rounded shadow-2xl transition-transform duration-300" src="" alt="Full view">
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="Full view" onclick="event.stopPropagation()">
     </div>
 
     <script>
         const grid = document.getElementById('photo-grid');
-        // Correct path to your GitHub Raw images
         const repoPath = 'https://raw.githubusercontent.com/Linyan0115/my-site/main/life/';
 
-        // Generate 14 items
         for (let i = 1; i <= 14; i++) {
             const item = document.createElement('div');
             item.className = 'masonry-item';
-            
             const imgSrc = `${repoPath}${i}.png`;
             
             item.innerHTML = `
-                <img src="${imgSrc}" 
-                     alt="Moment ${i}" 
-                     loading="lazy" 
+                <img src="${imgSrc}" loading="lazy" 
                      onload="this.parentElement.style.opacity='1'"
-                     onerror="console.error('Missing image: ${i}.png'); this.parentElement.style.display='none'">
-                <div class="img-overlay uppercase tracking-tighter">📍 Exploration · 2024</div>
+                     onerror="this.parentElement.style.display='none'">
             `;
             
-            // Click to preview
             item.onclick = (e) => {
-                e.stopPropagation();
-                const lightbox = document.getElementById('lightbox');
-                const lightboxImg = document.getElementById('lightbox-img');
-                lightboxImg.src = imgSrc;
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('active');
+                openLightbox(imgSrc);
             };
-            
             grid.appendChild(item);
         }
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 禁止背景滚动
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // 恢复滚动
+        }
+
+        // 按 Esc 键也可以关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 </html>
