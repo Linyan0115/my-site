@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
         
-        /* 瀑布流核心布局 */
+        /* Masonry Grid Layout */
         .masonry-container {
             column-count: 2;
             column-gap: 1.25rem;
@@ -23,9 +23,10 @@
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            background: #f1f5f9;
+            background: #f8fafc;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: zoom-in;
+            opacity: 0; /* Initially hidden for fade-in effect */
         }
 
         .masonry-item img {
@@ -37,57 +38,60 @@
 
         .masonry-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
 
         .masonry-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
-        /* 简单的遮罩文字，增加氛围感 */
+        /* Image Label Overlay */
         .img-overlay {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.4));
-            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            padding: 15px;
             opacity: 0;
             transition: opacity 0.3s ease;
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
+            letter-spacing: 0.05em;
         }
         .masonry-item:hover .img-overlay { opacity: 1; }
 
-        /* 全屏预览动画 */
+        /* Lightbox Fade In */
         #lightbox.active { display: flex; animation: fadeIn 0.3s ease forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="text-slate-900">
 
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-slate-50 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="font-bold tracking-tighter text-xl">Linyan Li</a>
             <div class="space-x-8 text-sm font-medium text-slate-500">
-                <a href="experience.html" class="hover:text-blue-600">Experience</a>
-                <a href="project.html" class="hover:text-blue-600">Project</a>
-                <a href="conference.html" class="hover:text-blue-600">Conference</a>
+                <a href="experience.html" class="hover:text-blue-600 transition">Experience</a>
+                <a href="project.html" class="hover:text-blue-600 transition">Project</a>
+                <a href="conference.html" class="hover:text-blue-600 transition">Conference</a>
                 <a href="life.html" class="text-blue-600 font-bold">Life</a>
-                <a href="LinyanLi_CV.pdf" target="_blank" class="text-blue-600 underline">CV</a>
+                <a href="LinyanLi_CV.pdf" target="_blank" class="text-blue-600 font-bold underline underline-offset-4">CV</a>
             </div>
         </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-6 pt-32 pb-24">
         <div class="mb-12">
-            <h1 class="text-4xl font-bold mb-4">Life & Moments</h1>
-            <p class="text-slate-500 max-w-2xl mb-6">Capture of my journey beyond research—exploring the world, tasting life, and staying curious. 🌍✨</p>
+            <h1 class="text-4xl font-bold mb-4 tracking-tight text-slate-900">Life & Moments</h1>
+            <p class="text-slate-500 max-w-2xl mb-8 leading-relaxed">
+                Capture of my journey beyond research—exploring the world, tasting life, and staying curious. 🌍✨
+            </p>
             
-            <div class="flex flex-wrap gap-2 mb-8 text-[11px] font-bold uppercase tracking-wider">
-                <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full"># Adventure</span>
-                <span class="px-3 py-1 bg-amber-50 text-amber-600 rounded-full"># Photography</span>
-                <span class="px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full"># Lifestyle</span>
-                <span class="px-3 py-1 bg-purple-50 text-purple-600 rounded-full"># Memories</span>
+            <div class="flex flex-wrap gap-3 text-[10px] font-bold uppercase tracking-widest">
+                <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100"># Adventure</span>
+                <span class="px-4 py-1.5 bg-orange-50 text-orange-600 rounded-full border border-orange-100"># Photography</span>
+                <span class="px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100"># Lifestyle</span>
+                <span class="px-4 py-1.5 bg-purple-50 text-purple-600 rounded-full border border-purple-100"># Memories</span>
             </div>
         </div>
 
@@ -95,30 +99,37 @@
             </div>
     </main>
 
-    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-4 cursor-zoom-out" onclick="this.classList.add('hidden')">
-        <img id="lightbox-img" class="max-h-full max-w-full rounded-lg shadow-2xl" src="" alt="Full view">
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 cursor-zoom-out" onclick="this.classList.add('hidden')">
+        <img id="lightbox-img" class="max-h-full max-w-full rounded shadow-2xl transition-transform duration-300" src="" alt="Full view">
     </div>
 
     <script>
         const grid = document.getElementById('photo-grid');
-        const repoPath = 'https://github.com/Linyan0115/my-site/tree/main/life'; // 请确认仓库名和分支名
+        // Correct path to your GitHub Raw images
+        const repoPath = 'https://raw.githubusercontent.com/Linyan0115/my-site/main/life/';
 
-        // 循环生成你的 14 张照片
+        // Generate 14 items
         for (let i = 1; i <= 14; i++) {
             const item = document.createElement('div');
             item.className = 'masonry-item';
             
-            // 假设格式为 .png
             const imgSrc = `${repoPath}${i}.png`;
             
             item.innerHTML = `
-                <img src="${imgSrc}" loading="lazy" alt="Moment ${i}" onerror="this.parentElement.style.display='none'">
-                <div class="img-overlay">📍 Discovery · 2024</div>
+                <img src="${imgSrc}" 
+                     alt="Moment ${i}" 
+                     loading="lazy" 
+                     onload="this.parentElement.style.opacity='1'"
+                     onerror="console.error('Missing image: ${i}.png'); this.parentElement.style.display='none'">
+                <div class="img-overlay uppercase tracking-tighter">📍 Exploration · 2024</div>
             `;
             
-            item.onclick = () => {
+            // Click to preview
+            item.onclick = (e) => {
+                e.stopPropagation();
                 const lightbox = document.getElementById('lightbox');
-                document.getElementById('lightbox-img').src = imgSrc;
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = imgSrc;
                 lightbox.classList.remove('hidden');
                 lightbox.classList.add('active');
             };
